@@ -1,29 +1,41 @@
-NAME = Devide_and_conquer
+NAME = ex00
 
-SRC = main.cpp \
-		CustomerAccountSystem.cpp \
-		BankingSystem.cpp \
+# Compiler: gcc for C program, g++ for C++
+
+CC = g++
+
+# Flags: -Wall -Wextra -Werror for mandatory part
+
+FLAGS = -Wall -Wextra -Werror
+
+# Source files
+
+SRC = ./main.cpp \
+		./Bank.cpp
+
+# Object files
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = clang++
-
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 -std=c++11
+# Compile
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+# Clean
 
 clean:
-	rm -rf $(OBJ)
+	rm -f $(OBJ)
+
+# Fclean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+
+# Re
 
 re: fclean all
 
-.PHONY: clean fclean all re
+# .PHONY
